@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="#F5F7F2"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="550px"
+        android:layout_height="550px"
+        android:layout_gravity="center"
+        android:src="@drawable/applogo"
+        />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TariReady"
+        android:layout_gravity="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="#1B4332"
+        />
+
+    <Button
+        android:id="@+id/signinBtnMain"
+        android:layout_marginTop="100dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="Sign In"
+        android:layout_gravity="center"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2E7D5B"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/registerBtnMain"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:text="Register"
+        android:layout_gravity="center"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#2E7D5B"
+        android:textAllCaps="false"/>
+
+</LinearLayout>

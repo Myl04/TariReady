@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F7F2"
+    android:padding="30dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#1B4332"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="40dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Full Name"
+        android:layout_marginTop="30dp"
+        android:textColor="#1B4332"
+        />
+
+    <EditText
+        android:id="@+id/arFullname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your Full name"
+        android:background="@drawable/edittext"
+        android:layout_marginBottom="12dp"
+        android:drawableStart="@drawable/profile_icon"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1B4332"
+        android:text="Username" />
+
+    <EditText
+        android:id="@+id/arUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext"
+        android:hint="Enter your username"
+        android:layout_marginBottom="12dp"
+        android:drawableStart="@drawable/username_icon"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1B4332"
+        android:text="Farm Name" />
+
+    <EditText
+        android:id="@+id/arFarmname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext"
+        android:hint="Your farm's name"
+        android:layout_marginBottom="12dp"
+        android:drawableStart="@drawable/farm_icon"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1B4332"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/arPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext"
+        android:hint="Create a password"
+        android:inputType="textPassword"
+        android:layout_marginBottom="12dp"
+        android:drawableStart="@drawable/password_icon"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#1B4332"
+        android:text="Confirm Password" />
+
+    <EditText
+        android:id="@+id/arConfirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Repeat password"
+        android:inputType="textPassword"
+        android:background="@drawable/edittext"
+        android:drawableStart="@drawable/password_icon"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/registerBtnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:backgroundTint="#2D6A4F"
+        android:padding="12dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Already have an account?"
+            android:textColor="#829082" />
+
+        <TextView
+            android:id="@+id/signinBtnRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:text=" Sign In"
+            android:textColor="#2E7D5B" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
