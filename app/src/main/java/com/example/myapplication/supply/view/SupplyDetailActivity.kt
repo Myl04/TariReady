@@ -45,7 +45,6 @@ class SupplyDetailActivity : AppCompatActivity(), SupplyContract.DetailView {
         btnRestock.setOnClickListener { presenter.onRestockClicked() }
         btnUseStock.setOnClickListener { presenter.onUseStockClicked() }
     }
-
     private fun bindViews() {
         btnBack          = findViewById(R.id.btnDetailBack)
         btnDelete        = findViewById(R.id.btnDeleteSupply)
@@ -59,8 +58,6 @@ class SupplyDetailActivity : AppCompatActivity(), SupplyContract.DetailView {
         tvExpiryDate     = findViewById(R.id.tvDetailExpiryDate)
         tvDateAdded      = findViewById(R.id.tvDetailDateAdded)
     }
-
-    // ─── SupplyContract.DetailView ────────────────────────────────────────────
 
     override fun showSupply(supply: Supply) {
         tvName.text         = supply.name
@@ -98,8 +95,6 @@ class SupplyDetailActivity : AppCompatActivity(), SupplyContract.DetailView {
     }
 
     override fun navigateBack() = finish()
-
-    // ─── Helpers ─────────────────────────────────────────────────────────────
 
     private fun showAmountDialog(title: String, hint: String, onConfirm: (String) -> Unit) {
         val input = EditText(this).apply {

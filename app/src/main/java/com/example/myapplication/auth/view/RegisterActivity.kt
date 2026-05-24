@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
 import com.example.myapplication.TariReadyApplication
@@ -28,16 +29,17 @@ class RegisterActivity : AppCompatActivity(), AuthContract.RegisterView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+        // ✅ Same prefs instance as SigninActivity — data flows correctly
         val prefs = (application as TariReadyApplication).sharedPreferences
         presenter = RegisterPresenter(this, prefs)
 
-        arFullname = findViewById(R.id.arFullname)
-        arUsername = findViewById(R.id.arUsername)
-        arFarmname = findViewById(R.id.arFarmname)
-        arPassword = findViewById(R.id.arPassword)
-        arConfirmation = findViewById(R.id.arConfirmation)
+        arFullname         = findViewById(R.id.arFullname)
+        arUsername         = findViewById(R.id.arUsername)
+        arFarmname         = findViewById(R.id.arFarmname)
+        arPassword         = findViewById(R.id.arPassword)
+        arConfirmation     = findViewById(R.id.arConfirmation)
         registerBtnRegister = findViewById(R.id.registerBtnRegister)
-        signinBtnRegister = findViewById(R.id.signinBtnRegister)
+        signinBtnRegister  = findViewById(R.id.signinBtnRegister)
 
         registerBtnRegister.setOnClickListener {
             presenter.onRegisterClicked(
@@ -58,12 +60,10 @@ class RegisterActivity : AppCompatActivity(), AuthContract.RegisterView {
         }
     }
 
-    override fun showError(message: String) {
-        showToast(message)
-    }
+    override fun showError(message: String) = showToast(message)
 
     override fun onRegistrationSuccess() {
-        showToast("Registration Successful! Please Sign In.", android.widget.Toast.LENGTH_LONG)
+        showToast("Registration Successful! Please Sign In.", Toast.LENGTH_LONG)
         val intent = Intent(this, SigninActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
         }

@@ -125,8 +125,6 @@ class AddSupplyActivity : AppCompatActivity(), SupplyContract.AddView {
         )
     }
 
-    // ─── SupplyContract.AddView ───────────────────────────────────────────────
-
     override fun getSelectedCategory(): String = selectedCategory
 
     override fun showError(message: String) = showToast(message)

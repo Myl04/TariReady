@@ -4,7 +4,7 @@ import com.example.myapplication.data.model.Supply
 
 interface SupplyContract {
 
-    // ── Add Supply ────────────────────────────────────────────────────────────
+    // Add Supply
     interface AddView {
         fun showError(message: String)
         fun onSaveSuccess()
@@ -26,7 +26,7 @@ interface SupplyContract {
         fun onBackClicked()
     }
 
-    // ── Supply Detail ─────────────────────────────────────────────────────────
+    //Supply Detail
     interface DetailView {
         fun showSupply(supply: Supply)
         fun showError(message: String)

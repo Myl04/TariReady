@@ -12,7 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.MainActivity
 import com.example.myapplication.R
 import com.example.myapplication.TariReadyApplication
+import com.example.myapplication.dashboard.view.DashboardActivity
 import com.example.myapplication.extensions.showToast
+import com.example.myapplication.history.view.HistoryActivity
+import com.example.myapplication.inventory.view.InventoryActivity
 import com.example.myapplication.profile.contract.ProfileContract
 import com.example.myapplication.profile.presenter.ProfilePresenter
 
@@ -22,10 +25,10 @@ class ProfileActivity : AppCompatActivity(), ProfileContract.ProfileView {
     private lateinit var pfpFullname: TextView
     private lateinit var pfpUsername2: TextView
     private lateinit var pfpFarmName: TextView
-    private lateinit var homeTextView: TextView
-    private lateinit var inventoryTextView: TextView
-    private lateinit var historyTextView: TextView
-    private lateinit var profileTextView: TextView
+    private lateinit var navHome: TextView
+    private lateinit var navInventory: TextView
+    private lateinit var navHistory: TextView
+    private lateinit var navProfile: TextView
 
     private lateinit var presenter: ProfileContract.ProfilePresenter
 
@@ -36,55 +39,64 @@ class ProfileActivity : AppCompatActivity(), ProfileContract.ProfileView {
         val prefs = (application as TariReadyApplication).sharedPreferences
         presenter = ProfilePresenter(this, prefs)
 
-        pfpFullname = findViewById(R.id.pfpFullname)
-        pfpUsername2 = findViewById(R.id.pfpUsername2)
-        pfpFarmName = findViewById(R.id.pfpFarmName)
-        homeTextView = findViewById(R.id.homeTextView)
-        inventoryTextView = findViewById(R.id.inventoryTextView)
-        historyTextView = findViewById(R.id.historyTextView)
-        profileTextView = findViewById(R.id.profileTextView)
+        bindViews()
+        setupNavigation()
+        setupHamburger()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.loadUserData()
+    }
+
+    private fun bindViews() {
         hamburgerButton = findViewById(R.id.hamburgerButton)
+        pfpFullname     = findViewById(R.id.pfpFullname)
+        pfpUsername2    = findViewById(R.id.pfpUsername2)
+        pfpFarmName     = findViewById(R.id.pfpFarmName)
+        navHome         = findViewById(R.id.homeTextView)
+        navInventory    = findViewById(R.id.inventoryTextView)
+        navHistory      = findViewById(R.id.historyTextView)
+        navProfile      = findViewById(R.id.profileTextView)
+    }
 
-        presenter.loadUserData(
-            intent.getStringExtra("fullName"),
-            intent.getStringExtra("username"),
-            intent.getStringExtra("farmName")
-        )
+    private fun setupNavigation() {
+        navHome.setOnClickListener      { presenter.onDashboardClicked() }
+        navInventory.setOnClickListener { presenter.onInventoryClicked() }
+        navHistory.setOnClickListener   { presenter.onHistoryClicked() }
+        navProfile.setOnClickListener   { presenter.onProfileClicked() }
+    }
 
-        hamburgerButton.setOnClickListener { view -> showPopupMenu(view) }
-
-        homeTextView.setOnClickListener { presenter.onHomeClicked() }
-        inventoryTextView.setOnClickListener { presenter.onInventoryClicked() }
-        historyTextView.setOnClickListener { presenter.onHistoryClicked() }
-        profileTextView.setOnClickListener { presenter.onProfileClicked() }
+    private fun setupHamburger() {
+        hamburgerButton.setOnClickListener { showPopupMenu(it) }
     }
 
     private fun showPopupMenu(view: View) {
-        val popupMenu = PopupMenu(this, view)
-        popupMenu.gravity = Gravity.END
-        popupMenu.menu.add(0, R.id.settingsOption, 0, "Settings")
-        popupMenu.menu.add(0, R.id.logoutOption, 1, "Logout")
-        popupMenu.menu.findItem(R.id.settingsOption).setIcon(R.drawable.settings_icon)
-        popupMenu.menu.findItem(R.id.logoutOption).setIcon(R.drawable.signout_icon)
-        popupMenu.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
+        val popup = PopupMenu(this, view)
+        popup.gravity = Gravity.END
+        popup.menu.add(0, R.id.settingsOption, 0, "Settings")
+        popup.menu.add(0, R.id.logoutOption,   1, "Logout")
+        popup.menu.findItem(R.id.settingsOption).setIcon(R.drawable.settings_icon)
+        popup.menu.findItem(R.id.logoutOption).setIcon(R.drawable.signout_icon)
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
                 R.id.settingsOption -> { presenter.onSettingsClicked(); true }
-                R.id.logoutOption -> { presenter.onLogoutClicked(); true }
-                else -> false
+                R.id.logoutOption   -> { presenter.onLogoutClicked();   true }
+                else                -> false
             }
         }
-        popupMenu.show()
+        popup.show()
     }
+
+    // ─── ProfileContract.ProfileView ─────────────────────────────────────────
 
     override fun displayUserData(fullName: String, username: String, farmName: String) {
-        pfpFullname.text = fullName
+        pfpFullname.text  = fullName
         pfpUsername2.text = username
-        pfpFarmName.text = farmName
+        pfpFarmName.text  = farmName
     }
 
-    override fun showMessage(message: String) {
-        showToast(message)
-    }
+    override fun showMessage(message: String) = showToast(message)
 
     override fun showSettingsDialog() {
         AlertDialog.Builder(this)
@@ -99,7 +111,7 @@ class ProfileActivity : AppCompatActivity(), ProfileContract.ProfileView {
             .setTitle("Logout")
             .setMessage("Are you sure you want to logout?")
             .setPositiveButton("Yes") { _, _ -> presenter.onLogoutConfirmed() }
-            .setNegativeButton("No") { dialog, _ -> dialog.dismiss() }
+            .setNegativeButton("No")  { dialog, _ -> dialog.dismiss() }
             .show()
     }
 
@@ -108,6 +120,21 @@ class ProfileActivity : AppCompatActivity(), ProfileContract.ProfileView {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
         startActivity(intent)
+        finish()
+    }
+
+    override fun navigateToDashboard() {
+        startActivity(Intent(this, DashboardActivity::class.java))
+        finish()
+    }
+
+    override fun navigateToInventory() {
+        startActivity(Intent(this, InventoryActivity::class.java))
+        finish()
+    }
+
+    override fun navigateToHistory() {
+        startActivity(Intent(this, HistoryActivity::class.java))
         finish()
     }
 }

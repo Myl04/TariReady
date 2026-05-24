@@ -8,18 +8,17 @@ interface ProfileContract {
         fun showSettingsDialog()
         fun showLogoutConfirmation()
         fun navigateToMain()
+        fun navigateToDashboard()
+        fun navigateToInventory()
+        fun navigateToHistory()
     }
 
     interface ProfilePresenter {
-        fun loadUserData(
-            intentFullName: String?,
-            intentUsername: String?,
-            intentFarmName: String?
-        )
+        fun loadUserData()
         fun onSettingsClicked()
         fun onLogoutClicked()
         fun onLogoutConfirmed()
-        fun onHomeClicked()
+        fun onDashboardClicked()
         fun onInventoryClicked()
         fun onHistoryClicked()
         fun onProfileClicked()

@@ -12,7 +12,6 @@ import com.example.myapplication.auth.contract.AuthContract
 import com.example.myapplication.auth.presenter.SigninPresenter
 import com.example.myapplication.dashboard.view.DashboardActivity
 import com.example.myapplication.extensions.showToast
-import com.example.myapplication.profile.view.ProfileActivity
 
 class SigninActivity : AppCompatActivity(), AuthContract.SigninView {
 
