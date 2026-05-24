@@ -36,7 +36,32 @@
         <activity
             android:name=".profile.view.ProfileActivity"
             android:exported="false"
+            android:parentActivityName=".dashboard.view.DashboardActivity" />
+
+        <activity
+            android:name=".dashboard.view.DashboardActivity"
+            android:exported="false"
             android:parentActivityName=".auth.view.SigninActivity" />
+
+        <activity
+            android:name=".inventory.view.InventoryActivity"
+            android:exported="false"
+            android:parentActivityName=".dashboard.view.DashboardActivity" />
+
+        <activity
+            android:name=".history.view.HistoryActivity"
+            android:exported="false"
+            android:parentActivityName=".dashboard.view.DashboardActivity" />
+
+        <activity
+            android:name=".supply.view.AddSupplyActivity"
+            android:exported="false"
+            android:parentActivityName=".inventory.view.InventoryActivity" />
+
+        <activity
+            android:name=".supply.view.SupplyDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".inventory.view.InventoryActivity" />
 
     </application>
 
