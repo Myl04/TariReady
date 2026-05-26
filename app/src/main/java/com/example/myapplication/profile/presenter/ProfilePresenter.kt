@@ -24,13 +24,12 @@ class ProfilePresenter(
     override fun onLogoutClicked() = view.showLogoutConfirmation()
 
     override fun onLogoutConfirmed() {
-        prefs.clearUser()
         view.showMessage("Logged out successfully")
         view.navigateToMain()
     }
 
     override fun onDashboardClicked() = view.navigateToDashboard()
     override fun onInventoryClicked() = view.navigateToInventory()
-    override fun onHistoryClicked()   = view.navigateToHistory()
-    override fun onProfileClicked()   = view.showMessage("Profile — you are here")
+    override fun onHistoryClicked() = view.navigateToHistory()
+    override fun onProfileClicked() = view.showMessage("Profile — you are here")
 }

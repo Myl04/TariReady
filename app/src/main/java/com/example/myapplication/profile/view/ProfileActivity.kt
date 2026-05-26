@@ -51,13 +51,13 @@ class ProfileActivity : AppCompatActivity(), ProfileContract.ProfileView {
 
     private fun bindViews() {
         hamburgerButton = findViewById(R.id.hamburgerButton)
-        pfpFullname     = findViewById(R.id.pfpFullname)
-        pfpUsername2    = findViewById(R.id.pfpUsername2)
-        pfpFarmName     = findViewById(R.id.pfpFarmName)
-        navHome         = findViewById(R.id.homeTextView)
-        navInventory    = findViewById(R.id.inventoryTextView)
-        navHistory      = findViewById(R.id.historyTextView)
-        navProfile      = findViewById(R.id.profileTextView)
+        pfpFullname = findViewById(R.id.pfpFullname)
+        pfpUsername2 = findViewById(R.id.pfpUsername2)
+        pfpFarmName = findViewById(R.id.pfpFarmName)
+        navHome = findViewById(R.id.homeTextView)
+        navInventory = findViewById(R.id.inventoryTextView)
+        navHistory = findViewById(R.id.historyTextView)
+        navProfile = findViewById(R.id.profileTextView)
     }
 
     private fun setupNavigation() {

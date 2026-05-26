@@ -6,6 +6,8 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.auth.view.RegisterActivity
 import com.example.myapplication.auth.view.SigninActivity
+import com.example.myapplication.dashboard.view.DashboardActivity
+import com.example.myapplication.extensions.isLoggedIn
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,19 +16,25 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val prefs = (application as TariReadyApplication).sharedPreferences
+        if (prefs.isLoggedIn()) {
+            startActivity(Intent(this, DashboardActivity::class.java))
+            finish()
+            return
+        }
+
         setContentView(R.layout.activity_main)
 
-        signinBtnMain = findViewById(R.id.signinBtnMain)
+        signinBtnMain  = findViewById(R.id.signinBtnMain)
         registerBtnMain = findViewById(R.id.registerBtnMain)
 
         signinBtnMain.setOnClickListener {
-            val intent = Intent(this, SigninActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, SigninActivity::class.java))
         }
 
         registerBtnMain.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 }

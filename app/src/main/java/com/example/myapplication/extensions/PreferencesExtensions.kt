@@ -15,6 +15,7 @@ fun SharedPreferences.saveUser(fullName: String, username: String, farmName: Str
         putString("username", username)
         putString("farmName", farmName)
         putString("password", password)
+        putBoolean("isLoggedIn", true)   // mark session as active
         apply()
     }
 }
@@ -28,6 +29,11 @@ fun SharedPreferences.getUser(): UserData {
     )
 }
 
+// Only clears the session flag — account data is preserved so user can sign back in
 fun SharedPreferences.clearUser() {
-    edit().clear().apply()
+    edit().putBoolean("isLoggedIn", false).apply()
+}
+
+fun SharedPreferences.isLoggedIn(): Boolean {
+    return getBoolean("isLoggedIn", false)
 }

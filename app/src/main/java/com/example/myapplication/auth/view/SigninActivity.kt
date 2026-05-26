@@ -29,9 +29,9 @@ class SigninActivity : AppCompatActivity(), AuthContract.SigninView {
         val prefs = (application as TariReadyApplication).sharedPreferences
         presenter = SigninPresenter(this, prefs)
 
-        etUsername       = findViewById(R.id.etUsername)
-        etPassword       = findViewById(R.id.etPassword)
-        signinBtnSignin  = findViewById(R.id.signinBtnSignin)
+        etUsername = findViewById(R.id.etUsername)
+        etPassword = findViewById(R.id.etPassword)
+        signinBtnSignin = findViewById(R.id.signinBtnSignin)
         registerBtnSignin = findViewById(R.id.registerBtnSignin)
 
         signinBtnSignin.setOnClickListener {
