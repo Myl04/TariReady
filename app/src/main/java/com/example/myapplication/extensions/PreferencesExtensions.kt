@@ -29,7 +29,6 @@ fun SharedPreferences.getUser(): UserData {
     )
 }
 
-// Only clears the session flag — account data is preserved so user can sign back in
 fun SharedPreferences.clearUser() {
     edit().putBoolean("isLoggedIn", false).apply()
 }

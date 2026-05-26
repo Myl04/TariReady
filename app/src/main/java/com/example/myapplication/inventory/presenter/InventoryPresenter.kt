@@ -7,7 +7,6 @@ class InventoryPresenter(
     private val view: InventoryContract.View,
     private val repository: SupplyRepository
 ) : InventoryContract.Presenter {
-
     override fun loadSupplies(filterCategory: String, query: String) {
         var list = repository.getAllSupplies()
         if (filterCategory != "All") {
@@ -19,9 +18,9 @@ class InventoryPresenter(
         if (list.isEmpty()) view.showEmptyState() else view.showSupplies(list)
     }
 
-    override fun onAddClicked()                    = view.navigateToAddSupply()
+    override fun onAddClicked() = view.navigateToAddSupply()
     override fun onSupplyClicked(supplyId: String) = view.navigateToSupplyDetail(supplyId)
-    override fun onDashboardClicked()              = view.navigateToDashboard()
-    override fun onHistoryClicked()                = view.navigateToHistory()
-    override fun onProfileClicked()                = view.navigateToProfile()
+    override fun onDashboardClicked() = view.navigateToDashboard()
+    override fun onHistoryClicked() = view.navigateToHistory()
+    override fun onProfileClicked() = view.navigateToProfile()
 }

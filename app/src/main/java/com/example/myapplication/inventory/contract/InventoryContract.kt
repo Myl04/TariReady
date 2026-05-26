@@ -3,7 +3,6 @@ package com.example.myapplication.inventory.contract
 import com.example.myapplication.data.model.Supply
 
 interface InventoryContract {
-
     interface View {
         fun showSupplies(items: List<Supply>)
         fun showEmptyState()
@@ -13,7 +12,6 @@ interface InventoryContract {
         fun navigateToHistory()
         fun navigateToProfile()
     }
-
     interface Presenter {
         fun loadSupplies(filterCategory: String = "All", query: String = "")
         fun onAddClicked()

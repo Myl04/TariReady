@@ -37,7 +37,6 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View {
     private val categories = listOf("All", "Feeds", "Medicines", "Vitamins", "Other")
 
     private lateinit var presenter: InventoryContract.Presenter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inventory)
@@ -50,12 +49,10 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View {
         setupCategoryChips()
         setupNavigation()
     }
-
     override fun onResume() {
         super.onResume()
         reload()
     }
-
     private fun bindViews() {
         etSearch     = findViewById(R.id.etSearchSupplies)
         llSupplyList = findViewById(R.id.llSupplyList)
@@ -69,7 +66,6 @@ class InventoryActivity : AppCompatActivity(), InventoryContract.View {
 
         btnAdd.setOnClickListener { presenter.onAddClicked() }
     }
-
     private fun setupSearch() {
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) = reload()
